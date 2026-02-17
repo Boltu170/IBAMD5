@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oligopolistic Markets & Corporate Planning - Lecture 5</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+```
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #D2B48C;
+        color: #000;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .slide {
+        background: #E8D7C3;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        flex-grow: 1;
+        display: none;
+    }
+
+    .slide.active {
+        display: block;
+        animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+        color: #2C1810;
+        border-bottom: 4px solid #8B4513;
+        padding-bottom: 10px;
+    }
+
+    h2 { font-size: 1.8em; margin-bottom: 15px; color: #2C1810; }
+    h3 { font-size: 1.3em; margin: 18px 0 8px 0; color: #4A2511; }
+
+    .content { margin: 15px 0; }
+
+    .bullet-points { margin: 15px 0; padding-left: 20px; }
+    .bullet-points li { margin: 10px 0; font-size: 1.05em; line-height: 1.8; }
+
+    .example-box {
+        background: #F5E6D3;
+        border-left: 5px solid #D2691E;
+        padding: 18px;
+        margin: 18px 0;
+        border-radius: 8px;
+    }
+    .example-box h3 { margin-top: 0; color: #D2691E; }
+
+    .definition-toggle {
+        background: #8B4513;
+        color: white;
+        border: none;
+        padding: 11px 22px;
+        font-size: 1em;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 12px 0;
+        transition: all 0.3s;
+    }
+    .definition-toggle:hover { background: #A0522D; transform: translateY(-2px); }
+
+    .definition-content {
+        display: none;
+        background: #FFF8DC;
+        padding: 18px;
+        margin: 12px 0;
+        border-radius: 8px;
+        border: 2px solid #8B4513;
+    }
+    .definition-content.show { display: block; animation: slideDown 0.3s; }
+
+    @keyframes slideDown {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .mcq-section {
+        background: #FFE4B5;
+        padding: 22px;
+        margin: 22px 0;
+        border-radius: 10px;
+        border: 3px solid #CD853F;
+    }
+    .mcq-question { font-size: 1.15em; font-weight: bold; margin-bottom: 14px; color: #2C1810; }
+    .mcq-options { list-style: none; padding: 0; }
+    .mcq-option {
+        background: white;
+        padding: 13px;
+        margin: 9px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+        font-size: 1em;
+    }
+    .mcq-option:hover { background: #FFF8DC; border-color: #8B4513; transform: translateX(5px); }
+    .mcq-option.correct { background: #90EE90; border-color: #228B22; }
+    .mcq-option.incorrect { background: #FFB6C6; border-color: #DC143C; }
+
+    .mcq-feedback {
+        display: none;
+        margin-top: 14px;
+        padding: 14px;
+        border-radius: 8px;
+        font-size: 1em;
+        line-height: 1.6;
+    }
+    .mcq-feedback.show { display: block; }
+    .mcq-feedback.correct-feedback { background: #D4EDDA; border: 2px solid #28A745; color: #155724; }
+    .mcq-feedback.incorrect-feedback { background: #F8D7DA; border: 2px solid #DC3545; color: #721C24; }
+
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 28px;
+        padding-top: 18px;
+        border-top: 2px solid #8B4513;
+    }
+
+    .nav-btn {
+        background: #8B4513;
+        color: white;
+        border: none;
+        padding: 13px 28px;
+        font-size: 1.1em;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .nav-btn:hover:not(:disabled) { background: #A0522D; transform: scale(1.05); }
+    .nav-btn:disabled { background: #A9A9A9; cursor: not-allowed; }
+
+    .progress { text-align: center; font-size: 1.2em; color: #2C1810; font-weight: bold; }
+
+    .highlight { background: #FFD700; padding: 2px 5px; border-radius: 3px; font-weight: bold; }
+
+    table { width: 100%; border-collapse: collapse; margin: 18px 0; }
+    table th, table td { border: 2px solid #8B4513; padding: 11px; text-align: left; font-size: 0.95em; }
+    table th { background: #CD853F; color: white; font-weight: bold; }
+    table td { background: #FFF8DC; }
+
+    .simple-box {
+        background: #FFFACD;
+        padding: 14px;
+        margin: 13px 0;
+        border-radius: 8px;
+        border-left: 4px solid #8B4513;
+    }
+
+    .diagram-label {
+        background: #FFE4B5;
+        padding: 14px;
+        margin: 18px 0;
+        border-radius: 8px;
+        border: 2px solid #CD853F;
+    }
+
+    .visual-diagram { text-align: center; margin: 18px 0; font-size: 2.5em; }
+
+    .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin: 15px 0;
+    }
+
+    @media (max-width: 600px) {
+        .two-col { grid-template-columns: 1fr; }
+        h1 { font-size: 1.6em; }
+    }
+</style>
+```
+
+</head>
+<body>
+<div class="container">
+
+<!-- SLIDE 1: Title -->
+
+<div class="slide active">
+    <h1>🏭 Oligopolistic Markets & Corporate Planning</h1>
+    <h2>Lecture 5 - How Real Markets Actually Work</h2>
+    <div class="content">
+        <div class="visual-diagram">🏢🆚🏢</div>
+        <div class="bullet-points">
+            <ul>
+                <li>Most markets are controlled by just a <strong>few giant companies</strong></li>
+                <li>Real competition is very different from what simple theory suggests</li>
+                <li>Big firms have massive advantages over small firms</li>
+                <li>Planning by large corporations shapes our whole economy</li>
+            </ul>
+        </div>
+        <div class="example-box">
+            <h3>📚 What You Will Learn</h3>
+            <p>1. How small firms compete against each other</p>
+            <p>2. Why big firms always beat small firms</p>
+            <p>3. How giant firms compete against each other</p>
+            <p>4. Why modern economies are really <strong>planning systems</strong>, not free markets</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ What is an oligopoly?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'A monopoly is ONE firm controlling a market. An oligopoly is a FEW large firms dominating.', 'An oligopoly is a market dominated by a small number of large firms.')">A) One firm controls the whole market</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Thousands of small firms describes perfect competition, not an oligopoly.', 'An oligopoly is a market dominated by a small number of large firms.')">B) Thousands of small firms compete</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'The government does not run an oligopoly - it is private firms that dominate.', 'An oligopoly is a market dominated by a small number of large firms.')">C) The government runs the market</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! An oligopoly is where a small number of large firms dominate and control a market.', 'An oligopoly is a market dominated by a small number of large firms.')">D) A few large firms dominate</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 2: Recap Week 4 -->
+
+<div class="slide">
+    <h1>🔄 Recap - What We Learned Last Week</h1>
+    <div class="content">
+        <h3>The Price Mechanism - How Free Markets Are Supposed to Work</h3>
+        <div class="bullet-points">
+            <ul>
+                <li>Last week we studied <span class="highlight">perfectly competitive markets</span></li>
+                <li>Price competition is the main way firms compete</li>
+                <li>Three key conditions needed for this to work:</li>
+            </ul>
+        </div>
+        <div class="simple-box">
+            <p><strong>Condition 1:</strong> Prices and quantities can change freely</p>
+            <p><strong>Condition 2:</strong> Firms can freely enter or leave markets</p>
+            <p><strong>Condition 3:</strong> All firms are small - none have market power</p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 What is Market Power?</button>
+        <div class="definition-content">
+            <p><strong>Market power</strong> means a firm is big enough to influence prices or block competitors.</p>
+            <p>• A small corner shop has NO market power - it must charge what the market says</p>
+            <p>• Amazon HAS market power - it can set prices and push out competitors</p>
+            <p>In a perfectly competitive market, NO firm has market power. In reality, big firms have enormous market power!</p>
+        </div>
+        <div class="example-box">
+            <h3>💡 Key Point from Week 4</h3>
+            <p>Perfect information is <strong>NOT needed</strong> for markets to work (Austrian theory).</p>
+            <p>Prices themselves carry the information! When a price goes up, you know something has changed - you don't need to know WHY.</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ Which condition is NOT needed for a perfectly competitive market?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Free entry and exit IS needed - firms must be able to come and go freely.', 'Perfect information is NOT needed according to the Austrian theory - prices carry the information instead.')">A) Free entry and exit from markets</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! According to Austrian theory, perfect information is NOT needed - prices send the signals instead.', 'Perfect information is NOT needed according to the Austrian theory - prices carry the information instead.')">B) Perfect information for all firms</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Small firms with no market power IS needed in perfect competition.', 'Perfect information is NOT needed according to the Austrian theory - prices carry the information instead.')">C) Small firms with no market power</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Free price adjustment IS needed for the price mechanism to work.', 'Perfect information is NOT needed according to the Austrian theory - prices carry the information instead.')">D) Free adjustment of prices</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 3: Austrian Theory - Hayek -->
+
+<div class="slide">
+    <h1>🇦🇹 The Austrian Theory - Hayek's Big Idea</h1>
+    <div class="content">
+        <h3>Friedrich von Hayek (1945) - A Famous Economist's Key Argument</h3>
+        <div class="simple-box">
+            <p><strong>Main idea:</strong> You do NOT need to know everything for markets to work.</p>
+            <p>Prices act like <span class="highlight">signals</span> that tell you what to do - even without knowing WHY!</p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 The Famous Tin Example</button>
+        <div class="definition-content">
+            <h3>Imagine You Run an Electronics Repair Shop...</h3>
+            <p><strong>What happens:</strong> A tin factory closes down somewhere in the world</p>
+            <p><strong>Do you know this?</strong> No! You are just a small repair shop owner</p>
+            <p><strong>What happens next:</strong></p>
+            <p>1. Tin supply goes down → first buyers offer higher prices to get tin</p>
+            <p>2. Tin price rises → soldering material becomes more expensive</p>
+            <p>3. Your soldering materials become more expensive</p>
+            <p>4. You notice prices went up and adjust your business</p>
+            <p><strong>You never needed to know about the factory closing!</strong> The price change told you everything you needed to know.</p>
+        </div>
+        <div class="example-box">
+            <h3>🛢️ Real Life: Oil Prices</h3>
+            <p>When oil prices go up, you don't need to know if it's because of:</p>
+            <p>• A war in the Middle East</p>
+            <p>• A pipeline breaking</p>
+            <p>• OPEC cutting production</p>
+            <p>You just know petrol is more expensive → drive less, use public transport, buy electric car</p>
+            <p><strong>The price signal was enough!</strong></p>
+        </div>
+        <div class="diagram-label">
+            <p><strong>📍 Key Term: Price Signal</strong></p>
+            <p>A price change that tells market actors to change their behaviour - without needing to know the full story of WHY the price changed.</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ According to Hayek, what do prices act as in the market?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Prices are not just numbers - they carry important information about market changes.', 'Hayek argued prices act as signals, telling market actors what to do without needing full information.')">A) Just numbers on a price tag</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Prices are set by the government in a command economy, not in Hayek\'s free market theory.', 'Hayek argued prices act as signals, telling market actors what to do without needing full information.')">B) Instructions from the government</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Hayek said prices act as signals - they tell you what to do without needing to know all the details.', 'Hayek argued prices act as signals, telling market actors what to do without needing full information.')">C) Signals that guide market behaviour</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Profits are different from prices - prices are the signal, profit is the reward.', 'Hayek argued prices act as signals, telling market actors what to do without needing full information.')">D) Measures of business profit only</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 4: Real World Competition Overview -->
+
+<div class="slide">
+    <h1>🌍 Real World Competition - Three Types</h1>
+    <div class="content">
+        <div class="visual-diagram">🏪🆚🏪 | 🏪🆚🏢 | 🏢🆚🏢</div>
+        <h3>In the real world, we have THREE different types of competition:</h3>
+        <div class="simple-box">
+            <p><strong>Type 1: Small vs Small</strong></p>
+            <p>Small firms competing against other small firms</p>
+            <p>Called: <span class="highlight">Monopolistic Competition</span></p>
+        </div>
+        <div class="simple-box">
+            <p><strong>Type 2: Small vs Big</strong></p>
+            <p>Small firms trying to compete against giant firms</p>
+            <p>Result: Big firms almost always win!</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>Type 3: Big vs Big</strong></p>
+            <p>Giant firms competing against other giant firms</p>
+            <p>Called: <span class="highlight">Oligopolistic Competition</span></p>
+        </div>
+        <div class="example-box">
+            <h3>🛒 Real Life Examples</h3>
+            <p><strong>Small vs Small:</strong> Two local coffee shops competing on the same street</p>
+            <p><strong>Small vs Big:</strong> A local bookshop vs Amazon</p>
+            <p><strong>Big vs Big:</strong> Tesco vs Sainsbury's vs ASDA vs Morrisons</p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 Why Does This Matter?</button>
+        <div class="definition-content">
+            <p>Each type of competition works very differently:</p>
+            <p>• Small firms compete mainly on <strong>price, quality, and location</strong></p>
+            <p>• Big firms have so many advantages that small firms cannot really compete against them</p>
+            <p>• Big firms competing against each other <strong>AVOID price competition</strong> - they compete in other ways</p>
+            <p>Understanding these differences is key to understanding how the real economy works!</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ What is the term for big firms competing against other big firms?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Perfect competition describes many small firms competing - not big firms against each other.', 'Big firms competing against each other is called oligopolistic competition.')">A) Perfect market competition</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! When big firms compete against each other, it is called oligopolistic competition.', 'Big firms competing against each other is called oligopolistic competition.')">B) Oligopolistic competition</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Monopolistic competition describes small firms competing - not big firms.', 'Big firms competing against each other is called oligopolistic competition.')">C) Monopolistic competition</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Price competition is just one type of competition - not the name for big vs big competition.', 'Big firms competing against each other is called oligopolistic competition.')">D) Price-based market competition</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 5: Monopolistic Competition -->
+
+<div class="slide">
+    <h1>🏪 Monopolistic Competition - Small vs Small</h1>
+    <div class="content">
+        <h3>How Small and Medium Firms (SMEs) Compete</h3>
+        <div class="bullet-points">
+            <ul>
+                <li>SME stands for <span class="highlight">Small and Medium Enterprise</span></li>
+                <li>Even small firms have <strong>some</strong> market power</li>
+                <li>Customers cannot ALWAYS easily switch to another firm</li>
+                <li>This gives small firms some control over their prices</li>
+            </ul>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 Why Can't Customers Always Switch?</button>
+        <div class="definition-content">
+            <h3>Three Main Reasons:</h3>
+            <p><strong>1. Location</strong> - The other shop might be too far away</p>
+            <p>Example: Your nearest petrol station - you don't drive 20 miles to save 2p per litre!</p>
+            <p><strong>2. Time</strong> - You need it NOW and can't wait</p>
+            <p>Example: Running out of drinks at a party at 1am - you go to the local late-night shop even if it's expensive!</p>
+            <p><strong>3. Habit/Brand loyalty</strong> - You trust and prefer a particular firm</p>
+            <p>Example: You always go to the same hairdresser because you trust them with your hair</p>
+        </div>
+        <div class="example-box">
+            <h3>☕ Example: Two Coffee Shops on the Same Street</h3>
+            <p>Both shops have some market power because:</p>
+            <p>• Regular customers keep coming back (habit)</p>
+            <p>• One might be closer to the bus stop (location advantage)</p>
+            <p>• One opens earlier (time advantage)</p>
+            <p>• One has better Wi-Fi (differentiation)</p>
+            <p>Neither shop needs to just compete on price alone!</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ Why do small firms have SOME market power even though they are small?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Small firms do not have government protection - they earn market power through other means.', 'Customers cannot always easily switch because of location, time, and habit - giving small firms some pricing power.')">A) The government protects small firms</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Small firms rarely have lower prices than big firms - they compete in other ways.', 'Customers cannot always easily switch because of location, time, and habit - giving small firms some pricing power.')">B) They always charge lower prices</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Customers cannot always easily switch due to location, time, or habit - giving small firms some pricing power.', 'Customers cannot always easily switch because of location, time, and habit - giving small firms some pricing power.')">C) Customers cannot always easily switch</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Small firms do not control their suppliers - big firms do that.', 'Customers cannot always easily switch because of location, time, and habit - giving small firms some pricing power.')">D) They control all their suppliers</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 6: Sources of SME Market Power -->
+
+<div class="slide">
+    <h1>💪 How Do Small Firms Get Market Power?</h1>
+    <div class="content">
+        <h3>Four Sources of Market Power for Small Firms:</h3>
+        <div class="simple-box">
+            <p><strong>1. 📍 Location</strong></p>
+            <p>Being in the right place gives power over nearby customers</p>
+            <p>Example: Only pharmacy in a village - customers have no choice!</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>2. ⏰ Time</strong></p>
+            <p>Being available when others are not creates power</p>
+            <p>Example: Only 24-hour garage in the area - commands higher prices</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>3. 🎨 Differentiation</strong></p>
+            <p>Making your product/service unique so customers prefer you</p>
+            <p>Example: A baker famous for special recipes - customers come specifically for them</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>4. 🔧 Cost Reduction / Technology</strong></p>
+            <p>Being more efficient than rivals so you earn more or can charge less</p>
+            <p>Example: A plumber with better tools who finishes jobs faster</p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 How SMEs Compete - Full List</button>
+        <div class="definition-content">
+            <p>Small firms compete using a MIX of these strategies:</p>
+            <p>• <strong>Price</strong> - charging less than competitors</p>
+            <p>• <strong>Cost</strong> - reducing costs to earn more profit</p>
+            <p>• <strong>Quality</strong> - offering better products or service</p>
+            <p>• <strong>Differentiation</strong> - being unique or specialised</p>
+            <p>• <strong>Location</strong> - being conveniently placed</p>
+            <p>• <strong>Timeliness</strong> - being available when needed</p>
+            <p>The exact mix depends on the type of business and its situation!</p>
+        </div>
+        <div class="example-box">
+            <h3>💇 Example: Local Hairdresser vs Big Salon Chain</h3>
+            <p>Local hairdresser survives by competing on:</p>
+            <p>• <strong>Location:</strong> Convenient for local residents</p>
+            <p>• <strong>Personalisation:</strong> Knows every customer personally</p>
+            <p>• <strong>Trust:</strong> Built up over years of loyal customers</p>
+            <p>• <strong>Flexibility:</strong> Can do last-minute appointments</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ A 24-hour convenience store charges more than supermarkets. Which source of market power explains this?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Location could help but the KEY advantage here is being open at unusual hours - this is about time.', 'The 24-hour store uses TIME as its source of market power - available when others are closed.')">A) Better product quality offered</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Cost reduction means being more efficient - the convenience store likely has higher costs, not lower.', 'The 24-hour store uses TIME as its source of market power - available when others are closed.')">B) Lower production cost advantage</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Location matters but the main advantage is being open late - other shops may be nearby but closed.', 'The 24-hour store uses TIME as its source of market power - available when others are closed.')">C) Prime location near customers</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! The 24-hour store uses TIME - it is open when customers need it most and other shops are closed.', 'The 24-hour store uses TIME as its source of market power - available when others are closed.')">D) Available at all hours always</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 7: Small vs Big - Who Wins? -->
+
+<div class="slide">
+    <h1>🥊 Small vs Big - Who Wins?</h1>
+    <div class="content">
+        <div class="visual-diagram">🏪😟 🆚 🏢😎</div>
+        <div class="simple-box">
+            <p><strong>Popular belief:</strong> Small firms are more flexible, entrepreneurial and agile - they should win!</p>
+            <p><strong>Reality:</strong> Large firms are <span class="highlight">overwhelmingly more competitive</span> than small firms!</p>
+        </div>
+        <h3>Why Do Large Firms Win?</h3>
+        <div class="bullet-points">
+            <ul>
+                <li><strong>Economies of Scale</strong> - costs fall as they produce more</li>
+                <li><strong>Economies of Size</strong> - can do things small firms simply cannot afford</li>
+                <li><strong>Better Differentiation</strong> - massive branding budgets</li>
+                <li><strong>Better Risk Management</strong> - can survive bad times</li>
+                <li><strong>Easier Finance</strong> - banks prefer lending to big firms</li>
+                <li><strong>Network Effects</strong> - more users = more valuable</li>
+                <li><strong>Supplier Power</strong> - bully suppliers into lower prices</li>
+                <li><strong>Political Power</strong> - lobby governments for favourable laws</li>
+            </ul>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 What Are Economies of Scale?</button>
+        <div class="definition-content">
+            <p><strong>Economies of scale</strong> = as you produce MORE, the cost per item goes DOWN</p>
+            <p><strong>Simple example:</strong></p>
+            <p>• Factory costs £100 million to build (fixed cost)</p>
+            <p>• If you make 1 car → costs £100 million per car!</p>
+            <p>• If you make 100,000 cars → costs £1,000 per car from the factory alone</p>
+            <p>• If you make 1,000,000 cars → costs £100 per car from the factory alone</p>
+            <p><strong>The more you make, the cheaper each item becomes!</strong> Small firms cannot compete with this.</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ What does "economies of scale" mean?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Economies of scale means the cost per item FALLS as you produce more - giving big firms a huge advantage.', 'Economies of scale means average costs fall as production increases.')">A) Costs per item fall as output rises</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'The opposite is true - big firms have LOWER costs per item, not higher.', 'Economies of scale means average costs fall as production increases.')">B) Costs per item rise as output rises</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Prices and costs are different things - economies of scale refers to COSTS falling, not prices.', 'Economies of scale means average costs fall as production increases.')">C) Prices fall when customers buy more</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Economies of scale is about production costs, not wages paid to workers.', 'Economies of scale means average costs fall as production increases.')">D) Wages fall when staff levels rise</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 8: Advantages of Large Firms Part 1 -->
+
+<div class="slide">
+    <h1>🏭 Why Big Firms Win - Part 1</h1>
+    <div class="content">
+        <h3>Advantage 1: Economies of Scale - Three Sources</h3>
+        <div class="simple-box">
+            <p><strong>a) Fixed Costs</strong></p>
+            <p>A big expense you pay ONCE, then spread across millions of products</p>
+            <p>Example: A factory costs £100m. Make 1 million products = £100 cost per product. Make 10 million = £10 per product!</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>b) Learning by Doing</strong></p>
+            <p>The more you produce, the more you learn to do it cheaper and faster</p>
+            <p>Workers get better, processes improve, waste is reduced</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>c) Division of Labour</strong></p>
+            <p>With more workers, each person can specialise in ONE task and become expert at it</p>
+            <p>Result: Faster, cheaper, better production</p>
+        </div>
+        <div class="example-box">
+            <h3>🚗 Henry Ford's Assembly Line - 1913</h3>
+            <p>Henry Ford introduced the assembly line to make the Model T car:</p>
+            <p>• Each worker did ONE simple job repeatedly → <strong>better division of labour</strong></p>
+            <p>• More cars produced → more <strong>learning by doing</strong></p>
+            <p>• Assembly line was a huge <strong>fixed cost</strong> spread over millions of cars</p>
+            <p><strong>Result:</strong> Price of Model T dropped by <span class="highlight">2/3!</span> Small firms had NO chance to compete!</p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 Division of Labour Explained Simply</button>
+        <div class="definition-content">
+            <p>Imagine making a sandwich in a cafe:</p>
+            <p><strong>One person does everything:</strong> Takes order, gets bread, cuts bread, adds filling, wraps, takes payment = slow!</p>
+            <p><strong>Division of labour:</strong> Person 1 takes orders, Person 2 cuts bread, Person 3 adds fillings, Person 4 wraps, Person 5 takes payment = much faster!</p>
+            <p>Each person becomes expert at their ONE task. Big firms can divide labour much more finely than small firms can!</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ Henry Ford's assembly line in 1913 - what was the main result for Model T prices?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Prices actually FELL dramatically - they did not stay the same.', 'The assembly line caused the price of the Model T to drop by about two thirds.')">A) Prices stayed roughly the same</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Prices fell, they did not rise - the whole point was making cars cheaper to produce.', 'The assembly line caused the price of the Model T to drop by about two thirds.')">B) Prices rose by about one third</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Prices fell by 2/3, not doubled - the assembly line made production far cheaper.', 'The assembly line caused the price of the Model T to drop by about two thirds.')">C) Prices roughly doubled overall</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! The assembly line was so efficient that the price of the Model T dropped by about two thirds!', 'The assembly line caused the price of the Model T to drop by about two thirds.')">D) Prices dropped by about two thirds</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 9: Advantages of Large Firms Part 2 - R&D -->
+
+<div class="slide">
+    <h1>🔬 Why Big Firms Win - Part 2: Size & R&D</h1>
+    <div class="content">
+        <h3>Advantage 2: Economies of Size</h3>
+        <div class="simple-box">
+            <p>Some things are <span class="highlight">IMPOSSIBLE</span> for small firms because they simply don't have enough money:</p>
+            <p>• Training AI systems (costs hundreds of millions)</p>
+            <p>• Building expensive factories with specialist equipment</p>
+            <p>• Paying for massive research and development (R&D)</p>
+            <p>• Covering huge legal costs</p>
+            <p>• Running technologies that need thousands of workers</p>
+        </div>
+        <div class="example-box">
+            <h3>💰 Real R&D Spending in 2025 - EU Scoreboard</h3>
+            <p>How much do tech giants spend on research every year?</p>
+            <table>
+                <tr><th>Company</th><th>R&D Spending (2025)</th></tr>
+                <tr><td>Amazon</td><td>€65.3 billion</td></tr>
+                <tr><td>Alphabet (Google)</td><td>€47.9 billion</td></tr>
+                <tr><td>Meta (Facebook)</td><td>€43.6 billion</td></tr>
+                <tr><td>Microsoft</td><td>€32.5 billion</td></tr>
+                <tr><td>Apple</td><td>€30.2 billion</td></tr>
+            </table>
+            <p><strong>No small firm could EVER match this spending!</strong></p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 What is R&D and Why Does It Matter?</button>
+        <div class="definition-content">
+            <p><strong>R&D = Research and Development</strong></p>
+            <p>Money spent on creating new products, improving existing ones, and finding better ways to do things.</p>
+            <p>Why it matters for competition:</p>
+            <p>• More R&D → better products → more customers</p>
+            <p>• Only large firms can afford massive R&D budgets</p>
+            <p>• Small firms cannot keep up → they fall further behind</p>
+            <p>• Amazon spending €65 billion on R&D per year means they are always ahead of smaller rivals</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ Which company spent the MOST on R&D in 2025 according to the EU Scoreboard?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Apple spent €30.2 billion - significant but not the highest on the list.', 'Amazon spent the most at €65.3 billion on R&D in 2025.')">A) Apple at thirty billion euros</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Microsoft spent €32.5 billion - not the highest in this list.', 'Amazon spent the most at €65.3 billion on R&D in 2025.')">B) Microsoft at thirty-two billion</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Amazon spent the most at €65.3 billion on R&D in 2025 - more than double Apple.', 'Amazon spent the most at €65.3 billion on R&D in 2025.')">C) Amazon at sixty-five billion euros</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Meta spent €43.6 billion - significant but not the highest amount.', 'Amazon spent the most at €65.3 billion on R&D in 2025.')">D) Meta at forty-three billion euros</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 10: Advantages Part 3 - Differentiation, Risk, Finance, Network Effects -->
+
+<div class="slide">
+    <h1>🌐 Why Big Firms Win - Part 3</h1>
+    <div class="content">
+        <div class="two-col">
+            <div class="simple-box">
+                <p><strong>3. 🎨 Better Differentiation</strong></p>
+                <p>Huge advertising and branding budgets</p>
+                <p>Products become household names</p>
+                <p>Customers trust and recognise big brands</p>
+            </div>
+            <div class="simple-box">
+                <p><strong>4. 🛡️ Better Risk Management</strong></p>
+                <p>Multiple business areas to rely on</p>
+                <p>If one area fails, others compensate</p>
+                <p>Large cash reserves to survive bad times</p>
+            </div>
+        </div>
+        <div class="two-col">
+            <div class="simple-box">
+                <p><strong>5. 💳 Easier Finance</strong></p>
+                <p>Banks prefer lending to big firms</p>
+                <p>Seen as less risky investments</p>
+                <p>Can fund growth from own profits</p>
+            </div>
+            <div class="simple-box">
+                <p><strong>6. 🔗 Network Effects</strong></p>
+                <p>More users = more valuable product</p>
+                <p>Hard for new competitors to break in</p>
+                <p>Example: Social media platforms</p>
+            </div>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 Network Effects Explained</button>
+        <div class="definition-content">
+            <p><strong>Network effects</strong> = a product becomes MORE useful the more people use it</p>
+            <p><strong>Example - WhatsApp:</strong></p>
+            <p>• If only 10 people used WhatsApp → not very useful (only 10 people to message)</p>
+            <p>• 2 billion people use WhatsApp → extremely useful (can message almost anyone)</p>
+            <p>• This means a NEW messaging app would struggle to compete - everyone is already on WhatsApp!</p>
+            <p>Big firms that benefit from network effects are almost impossible to displace!</p>
+        </div>
+        <div class="example-box">
+            <h3>📱 Facebook / Meta - Network Effects in Action</h3>
+            <p>Why can't a new social network easily beat Facebook?</p>
+            <p>• All your friends and family are on Facebook</p>
+            <p>• A new network starts with zero users = zero value to you</p>
+            <p>• You won't switch until everyone else does</p>
+            <p>• Everyone else won't switch until you do</p>
+            <p><strong>Result:</strong> Facebook keeps its dominance even if people don't like it!</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ Why is WhatsApp so hard to replace with a new messaging app?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'WhatsApp is not necessarily cheaper - many alternatives are also free.', 'WhatsApp benefits from network effects - the more people use it, the more valuable it becomes, making it hard to replace.')">A) WhatsApp is much cheaper to use</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! WhatsApp benefits from network effects - 2 billion users make it extremely valuable and hard to replace.', 'WhatsApp benefits from network effects - the more people use it, the more valuable it becomes, making it hard to replace.')">B) Network effects make it very valuable</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'WhatsApp does not have government protection - its advantage is purely from network effects.', 'WhatsApp benefits from network effects - the more people use it, the more valuable it becomes, making it hard to replace.')">C) The government protects WhatsApp</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Technology alone is not the reason - many rivals have similar technology but fewer users.', 'WhatsApp benefits from network effects - the more people use it, the more valuable it becomes, making it hard to replace.')">D) Superior technology beats rivals</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 11: Advantages Part 4 - Supplier Power, Illegal Tactics, Political -->
+
+<div class="slide">
+    <h1>⚡ Why Big Firms Win - Part 4</h1>
+    <div class="content">
+        <div class="simple-box">
+            <p><strong>7. 🔗 Power Over Suppliers</strong></p>
+            <p>Big firms can BULLY small suppliers into lower prices</p>
+            <p>Example: A small clothing manufacturer sells 80% of its output to ONE big retailer → the retailer can demand lower prices every year!</p>
+            <p>If the supplier refuses → it loses 80% of its business. So it has no choice!</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>8. ⚠️ Illegal Competitive Activities</strong></p>
+            <p>Big firms sometimes use illegal tactics - though hard to prove:</p>
+            <p>• <span class="highlight">Predatory pricing</span> - selling BELOW cost to destroy small rivals, then raising prices</p>
+            <p>• Forcing suppliers not to sell to competitors</p>
+            <p>• Even if caught, fines are treated as just a business cost!</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>9. 🏛️ Political Power</strong></p>
+            <p>Big firms lobby governments to pass laws that benefit them</p>
+            <p>They can threaten to move jobs abroad if they don't get what they want</p>
+            <p>Small firms have NO political power or influence</p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 What is Predatory Pricing?</button>
+        <div class="definition-content">
+            <p><strong>Predatory pricing</strong> = deliberately cutting prices BELOW your costs to drive out competitors</p>
+            <p><strong>How it works:</strong></p>
+            <p>1. Big firm cuts prices very low - even loses money temporarily</p>
+            <p>2. Small rivals cannot afford to sell at such low prices → they go bust</p>
+            <p>3. Once small rivals are gone, big firm raises prices again</p>
+            <p>4. Big firm now has even more market dominance!</p>
+            <p><strong>It is illegal but hard to prove</strong> - and big firms can afford the fines anyway!</p>
+        </div>
+        <div class="example-box">
+            <h3>🛍️ Example: Supermarkets vs Small Farmers</h3>
+            <p>Supermarkets routinely use their power over small farmers:</p>
+            <p>• Demand price cuts each year from farmers</p>
+            <p>• Can cancel orders at the last minute</p>
+            <p>• Farmers have no choice but to accept</p>
+            <p>• Many small farms have gone out of business as a result</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ What is predatory pricing?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'High prices to make more profit is normal pricing strategy - not predatory pricing.', 'Predatory pricing is selling below cost to drive out competitors, then raising prices again.')">A) Setting very high prices to earn more</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Matching competitor prices is normal competition - predatory pricing goes below cost.', 'Predatory pricing is selling below cost to drive out competitors, then raising prices again.')">B) Matching all competitor prices exactly</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Predatory pricing means selling below cost to destroy competitors, then raising prices once they are gone.', 'Predatory pricing is selling below cost to drive out competitors, then raising prices again.')">C) Selling below cost to destroy rivals</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Charging different prices to different customers is price discrimination - not predatory pricing.', 'Predatory pricing is selling below cost to drive out competitors, then raising prices again.')">D) Charging customers different prices</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 12: OECD Productivity Charts -->
+
+<div class="slide">
+    <h1>📊 The Proof - Large Firms ARE More Productive</h1>
+    <div class="content">
+        <h3>OECD Data - Labour Productivity by Firm Size</h3>
+        <div class="simple-box">
+            <p><strong>What the data shows (OECD 2016):</strong></p>
+            <p>• Large firms (250+ workers) = <span class="highlight">benchmark of 100</span></p>
+            <p>• Micro firms (1-9 workers) = only <strong>20-60</strong> in most countries!</p>
+            <p>• Small firms (10-49 workers) = only <strong>40-80</strong> in most countries!</p>
+            <p>• Medium firms (50-249) = closer but still <strong>below 100</strong> in most countries</p>
+        </div>
+        <div class="example-box">
+            <h3>📈 What Does This Mean in Simple Terms?</h3>
+            <p>In manufacturing, a large firm worker might produce <strong>£100,000 of value</strong> per year.</p>
+            <p>A micro firm (1-9 workers) worker might only produce <strong>£30,000-£50,000 of value</strong> per year.</p>
+            <p>That means the large firm is 2-3 times MORE productive per worker!</p>
+            <p>Large firms can pay workers MORE and still charge customers LESS - impossible for small firms to compete!</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>In Services (like restaurants, shops):</strong></p>
+            <p>The gap is smaller than manufacturing</p>
+            <p>Some small service firms actually match large firms in productivity</p>
+            <p>This is why small service businesses (hairdressers, repair shops) can survive!</p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 What is Labour Productivity?</button>
+        <div class="definition-content">
+            <p><strong>Labour productivity</strong> = the value produced per worker</p>
+            <p>Formula: Total value produced ÷ Number of workers</p>
+            <p>Why it matters:</p>
+            <p>• Higher productivity = more output from same number of workers</p>
+            <p>• More output = lower cost per item</p>
+            <p>• Lower cost = can charge less AND make more profit</p>
+            <p>• Large firms have higher productivity → huge competitive advantage over small firms</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ According to OECD data, which type of firm has the LOWEST labour productivity in manufacturing?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Large firms have the HIGHEST productivity - they are the benchmark of 100.', 'Micro firms (1-9 workers) have the lowest productivity, often only 20-40% of large firms.')">A) Large firms with 250 or more staff</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Medium firms are closer to large firms in productivity - not the lowest.', 'Micro firms (1-9 workers) have the lowest productivity, often only 20-40% of large firms.')">B) Medium firms with 50 to 249 staff</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Small firms are more productive than micro firms - they are not the lowest.', 'Micro firms (1-9 workers) have the lowest productivity, often only 20-40% of large firms.')">C) Small firms with 10 to 49 staff</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Micro firms (1-9 workers) have the lowest productivity - often only 20-40% of large firms in manufacturing.', 'Micro firms (1-9 workers) have the lowest productivity, often only 20-40% of large firms.')">D) Micro firms with 1 to 9 workers</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 13: Emergence of Oligopolies -->
+
+<div class="slide">
+    <h1>📈 How Markets Become Oligopolies</h1>
+    <div class="content">
+        <h3>The Process of Oligopolisation - Step by Step</h3>
+        <div class="simple-box">
+            <p><strong>Step 1:</strong> Market starts with many small firms all competing</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>Step 2:</strong> Some firms do better (luck, skill, better ideas) and grow bigger</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>Step 3:</strong> Bigger firms become MORE competitive (economies of scale etc.)</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>Step 4:</strong> They grow even MORE → become even more competitive → grow even MORE</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>Step 5:</strong> Eventually only a FEW giant firms dominate. Small firms either:</p>
+            <p>• Get outcompeted and close down</p>
+            <p>• Get bought out (taken over) by big firms</p>
+            <p>• Survive in small niches big firms don't care about</p>
+        </div>
+        <div class="example-box">
+            <h3>🛒 Example: UK Supermarkets</h3>
+            <p>In the 1950s there were thousands of independent grocery shops</p>
+            <p>Today just FOUR firms dominate UK grocery shopping:</p>
+            <p>• Tesco (~27% market share)</p>
+            <p>• Sainsbury's (~15%)</p>
+            <p>• ASDA (~14%)</p>
+            <p>• Morrisons (~10%)</p>
+            <p><strong>These four control about 66% of all UK grocery sales!</strong></p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 Do Big Firms Ever Let Small Firms Survive on Purpose?</button>
+        <div class="definition-content">
+            <p><strong>Yes! Sometimes big firms let small rivals survive for PR reasons</strong></p>
+            <p>• If a supermarket destroyed EVERY small local shop, the public backlash would be terrible</p>
+            <p>• Negative publicity could hurt sales more than the small firm ever did</p>
+            <p>• So big firms sometimes allow small firms to exist in niches, even if they could destroy them</p>
+            <p>This is a calculated business decision, not kindness!</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ What typically happens to small firms when an oligopoly forms?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Small firms do not usually grow to match big firms - the competitive advantages are too great.', 'Small firms typically get outcompeted, bought out, or survive only in small niches.')">A) Small firms grow to match big firms</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Governments rarely step in to help small firms against oligopolies.', 'Small firms typically get outcompeted, bought out, or survive only in small niches.')">B) Governments help all small firms survive</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Small firms typically get outcompeted, bought out, or survive only in small niche markets.', 'Small firms typically get outcompeted, bought out, or survive only in small niches.')">C) They close, get bought, or find niches</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Big firms do not merge with all small firms - they mainly buy the ones worth having or ignore the rest.', 'Small firms typically get outcompeted, bought out, or survive only in small niches.')">D) Big firms merge with every small firm</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 14: Oligopolies - Stability and Barriers -->
+
+<div class="slide">
+    <h1>🏰 Oligopolies Stay Stable - Hard to Break In!</h1>
+    <div class="content">
+        <h3>Once an Oligopoly Forms, It Is Very Hard to Disturb</h3>
+        <div class="simple-box">
+            <p><strong>Barriers to Entry</strong> = obstacles that stop new firms entering a market</p>
+            <p>These barriers are <span class="highlight">enormous</span> in oligopolistic markets!</p>
+        </div>
+        <div class="bullet-points">
+            <ul>
+                <li>New entrant would need to overcome ALL advantages of existing large firms</li>
+                <li>Would need billions in investment just to start competing</li>
+                <li>Existing large firms would fight back aggressively</li>
+                <li>Price wars, legal battles, buying up suppliers</li>
+                <li>New entrants can be destroyed before they even get started!</li>
+            </ul>
+        </div>
+        <div class="example-box">
+            <h3>✈️ Example: Starting a New Airline</h3>
+            <p>To compete with British Airways, easyJet, or Ryanair you would need:</p>
+            <p>• £billions to buy planes</p>
+            <p>• Airport slots (mostly owned by existing airlines)</p>
+            <p>• Years to build customer trust and loyalty</p>
+            <p>• Survive price wars from established airlines with huge cash reserves</p>
+            <p>• Regulatory approvals (lobbied for by existing airlines)</p>
+            <p><strong>Almost impossible for a new entrant - this is why few new airlines succeed!</strong></p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 What About Brand New Markets?</button>
+        <div class="definition-content">
+            <p>In the past, completely new markets (like cars, planes) were sometimes started by new firms.</p>
+            <p>But today, most new markets are <strong>immediately dominated by existing large firms</strong>.</p>
+            <p>Why? New products are so complex and expensive that only large firms can develop them.</p>
+            <p><strong>Exception: Software</strong></p>
+            <p>Software is one area where genuinely new firms DID emerge (Microsoft, Apple, Oracle).</p>
+            <p>This is because software can be created with fewer physical resources than other industries.</p>
+            <p>But even software is now dominated by a few giant firms!</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ What are "barriers to entry" in an oligopolistic market?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Tax rules are one small barrier but the term refers to all obstacles preventing new firms from entering.', 'Barriers to entry are all the obstacles that prevent new firms from entering and competing in a market.')">A) Tax rules set by the government</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Barriers to entry are all the obstacles that stop new firms from entering and competing - like needing billions of investment.', 'Barriers to entry are all the obstacles that prevent new firms from entering and competing in a market.')">B) Obstacles that stop new firms entering</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Physical walls are not barriers to entry - it is economic and competitive obstacles that matter.', 'Barriers to entry are all the obstacles that prevent new firms from entering and competing in a market.')">C) Physical walls around the factory</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Import tariffs are a type of trade barrier - not the same as barriers to entry in a market.', 'Barriers to entry are all the obstacles that prevent new firms from entering and competing in a market.')">D) Import tariffs on foreign products</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 15: Big vs Big - Need for Stability -->
+
+<div class="slide">
+    <h1>🏢🆚🏢 Big vs Big - The Need for Stability</h1>
+    <div class="content">
+        <h3>Why Do Giant Firms Need Stability?</h3>
+        <div class="simple-box">
+            <p>Large firms have <span class="highlight">complex operations</span> that require:</p>
+            <p>• Long-term planning (years or even decades ahead)</p>
+            <p>• Massive investments in specialised equipment</p>
+            <p>• Equipment that CANNOT easily be converted to other uses</p>
+            <p>• Thousands of workers with specific skills</p>
+            <p><strong>Unpredictability is their BIGGEST enemy!</strong></p>
+        </div>
+        <div class="example-box">
+            <h3>🏗️ Example: Building a Car Factory</h3>
+            <p>A car manufacturer builds a factory costing £2 billion:</p>
+            <p>• Takes 5 years to build</p>
+            <p>• Designed specifically for one type of car</p>
+            <p>• Cannot easily be converted to make something else</p>
+            <p>• Needs to operate for 20+ years to recoup the investment</p>
+            <p><strong>Any unexpected price war or market disruption could make this entire investment worthless!</strong></p>
+            <p>This is why big firms desperately avoid unpredictability.</p>
+        </div>
+        <div class="diagram-label">
+            <p><strong>📍 Key Insight:</strong></p>
+            <p>Many of the competitive strategies big firms use actually come from their <strong>need for stability</strong>, not just from wanting to beat rivals.</p>
+            <p>Understanding this explains almost everything about how big firms behave!</p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 What Happens Without Stability?</button>
+        <div class="definition-content">
+            <p>If a large firm cannot plan stably:</p>
+            <p>• Cannot make long-term investment decisions</p>
+            <p>• Cannot guarantee returns to shareholders</p>
+            <p>• Cannot plan production levels → wasteful over or underproduction</p>
+            <p>• Workers lose jobs if firm fails</p>
+            <p>A profitable activity today can become loss-making tomorrow if prices suddenly change → that's why big firms work so hard to control prices and demand!</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ Why do large firms need stability more than small firms?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Large firms are not lazier - they have more complex operations that genuinely require stability.', 'Large firms need stability because they have massive long-term investments and complex operations that cannot easily change.')">A) Large firms are lazier than small ones</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Stability is not a legal requirement - it is a practical need from their business structure.', 'Large firms need stability because they have massive long-term investments and complex operations that cannot easily change.')">B) The law requires large firms to plan</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Large firms have massive long-term investments and complex operations - unpredictability could make these worthless.', 'Large firms need stability because they have massive long-term investments and complex operations that cannot easily change.')">C) Massive investments need long-term plans</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Shareholders want profits but stability is needed because of complex operations, not just shareholder demands.', 'Large firms need stability because they have massive long-term investments and complex operations that cannot easily change.')">D) Shareholders always demand stability</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 16: Big vs Big - Avoiding Price Competition -->
+
+<div class="slide">
+    <h1>🚫 Big vs Big - Why They AVOID Price Wars</h1>
+    <div class="content">
+        <h3>Why Don't Big Firms Just Undercut Each Other's Prices?</h3>
+        <div class="simple-box">
+            <p>Imagine Big Firm A cuts its prices to steal customers from Big Firm B...</p>
+            <p><strong>What happens?</strong></p>
+            <p>1. Big Firm B has no choice - it MUST cut prices to keep its customers</p>
+            <p>2. Big Firm A cuts prices again</p>
+            <p>3. Big Firm B cuts again...</p>
+            <p>4. Result: <span class="highlight">PRICE WAR</span> - nobody wins! Both firms end up with lower profits or even losses!</p>
+        </div>
+        <div class="example-box">
+            <h3>🚗 Car Prices - Why They Stay Similar</h3>
+            <p>Notice how similar cars all cost roughly the same amount?</p>
+            <p>A new hatchback in the UK costs roughly <strong>£20,000</strong> whether it's:</p>
+            <p>• Ford Fiesta • Renault Clio • Vauxhall Corsa • Toyota Yaris</p>
+            <p>Car manufacturers WATCH each other's prices very closely and avoid undercutting.</p>
+            <p>You might see occasional <strong>promotional discounts</strong> to attract attention, but NEVER permanent price cuts to compete!</p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 What is Collusion?</button>
+        <div class="definition-content">
+            <p><strong>Collusion</strong> = when firms SECRETLY agree to fix prices or divide up market share</p>
+            <p>Types:</p>
+            <p>• <strong>Explicit collusion:</strong> Firms literally meet and agree prices (mostly ILLEGAL)</p>
+            <p>• <strong>Tacit collusion:</strong> Firms informally follow each other's prices without explicit agreement (harder to prove)</p>
+            <p>Why do firms collude?</p>
+            <p>• Keeps prices HIGH → more profit for all</p>
+            <p>• Avoids destructive price wars</p>
+            <p>Real example: In 2016, several airlines were fined by the EU for colluding to fix cargo prices!</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ Why do large firms generally AVOID price wars with each other?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Price wars are not illegal - avoiding them is a business strategy, not a legal requirement.', 'Price wars lead to lower profits for ALL firms without any winner - all firms end up worse off.')">A) Price wars are strictly illegal</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Customers would benefit from price wars - it is the FIRMS that suffer, which is why they avoid them.', 'Price wars lead to lower profits for ALL firms without any winner - all firms end up worse off.')">B) Customers dislike lower prices</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Big firms definitely CAN lower prices - they choose not to because it hurts everyone.', 'Price wars lead to lower profits for ALL firms without any winner - all firms end up worse off.')">C) Large firms cannot lower their prices</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Price wars hurt ALL competing firms - profits fall, unpredictability rises, and nobody ends up winning.', 'Price wars lead to lower profits for ALL firms without any winner - all firms end up worse off.')">D) Price wars hurt all firms involved</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 17: Big vs Big - Non-Price Competition -->
+
+<div class="slide">
+    <h1>🆕 Big vs Big - Non-Price Competition</h1>
+    <div class="content">
+        <h3>Instead of Price Wars, Big Firms Compete Through:</h3>
+        <div class="two-col">
+            <div class="simple-box">
+                <p><strong>🔬 New Products & Services</strong></p>
+                <p>Constantly launching improved products</p>
+                <p>Innovation beats rivals without price cuts</p>
+            </div>
+            <div class="simple-box">
+                <p><strong>🌏 New Markets</strong></p>
+                <p>Expanding into new countries or sectors</p>
+                <p>Find new customers instead of stealing rivals'</p>
+            </div>
+        </div>
+        <div class="two-col">
+            <div class="simple-box">
+                <p><strong>⚙️ New Technologies</strong></p>
+                <p>Better production methods = lower costs</p>
+                <p>New tech creates products rivals can't match</p>
+            </div>
+            <div class="simple-box">
+                <p><strong>🎨 Branding</strong></p>
+                <p>Massive advertising to build loyalty</p>
+                <p>Customers choose your brand over rivals</p>
+            </div>
+        </div>
+        <div class="example-box">
+            <h3>📱 Samsung vs Apple - Non-Price Competition in Action</h3>
+            <p>Samsung and Apple both release new phone models every year:</p>
+            <p>• <strong>Both know</strong> the other will release an improved phone</p>
+            <p>• <strong>Prices stay roughly similar</strong> - no price war!</p>
+            <p>• <strong>Competition is fierce</strong> but predictable</p>
+            <p>• If one company stops innovating → loses market share fast</p>
+            <p>• <strong>Key point:</strong> Very dangerous competition, but <span class="highlight">planned and predictable!</span></p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 Is Non-Price Competition Less Important?</button>
+        <div class="definition-content">
+            <p><strong>No! Non-price competition can be extremely dangerous!</strong></p>
+            <p>If you fall behind in:</p>
+            <p>• Technology → your products become outdated</p>
+            <p>• New markets → rivals grow larger than you</p>
+            <p>• Branding → customers switch to rivals</p>
+            <p>But crucially - it is <strong>planned and predictable</strong> competition.</p>
+            <p>Samsung knows Apple will release a new iPhone. They can plan for it.</p>
+            <p>Neither knows if the other will suddenly start a price war - that would be dangerous and unpredictable!</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ Why do Samsung and Apple prefer non-price competition over price competition?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'They are not friends - they are fierce rivals. But they both benefit from avoiding destructive price wars.', 'Non-price competition like innovation is planned and predictable - unlike price wars which create chaos and lower profits for all.')">A) They are friendly companies always</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'It is not illegal to cut prices - they CHOOSE not to because price wars are mutually destructive.', 'Non-price competition like innovation is planned and predictable - unlike price wars which create chaos and lower profits for all.')">B) Price competition is strictly illegal</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Non-price competition through innovation is planned and predictable - price wars create chaos and lower profits for everyone.', 'Non-price competition like innovation is planned and predictable - unlike price wars which create chaos and lower profits for all.')">C) Innovation is planned and predictable</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Customers do care about prices - but firms avoid price wars because they hurt the firms, not because customers don\'t care.', 'Non-price competition like innovation is planned and predictable - unlike price wars which create chaos and lower profits for all.')">D) Customers do not care about prices</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 18: Big vs Big - Supplier and Buyer Relationships -->
+
+<div class="slide">
+    <h1>🤝 Big vs Big - Controlling Supply & Demand</h1>
+    <div class="content">
+        <h3>How Large Firms Manage Their Relationships</h3>
+        <h3>With Suppliers:</h3>
+        <div class="simple-box">
+            <p>• Sign <span class="highlight">long-term contracts</span> with suppliers - locks in prices for years</p>
+            <p>• Avoids nasty surprises in costs</p>
+            <p>• Can plan production knowing exactly what inputs will cost</p>
+            <p>• Sometimes SHIFT RISK to suppliers - if demand falls, suppliers bear the loss</p>
+        </div>
+        <div class="example-box">
+            <h3>👗 Clothes Retailers vs Clothing Manufacturers</h3>
+            <p>Clothes retailers (like Next, H&M) have massive power over small manufacturers:</p>
+            <p>• Retailers tell manufacturers what prices to accept</p>
+            <p>• If market is bad → retailer cancels orders at last minute</p>
+            <p>• Manufacturer has already made the clothes → stuck with them!</p>
+            <p>• Manufacturer has no choice but to accept → thousands of other manufacturers will take the order</p>
+            <p><strong>Risk is shifted entirely onto the small manufacturer!</strong></p>
+        </div>
+        <h3>With Buyers:</h3>
+        <div class="simple-box">
+            <p>• <strong>Business buyers:</strong> Long-term contracts → predictable revenue</p>
+            <p>• <strong>Consumers:</strong> Heavy advertising and branding to CREATE and CONTROL demand</p>
+            <p>• Large firms try to make customers <span class="highlight">locked-in</span> to their products</p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 What Does "Locked-In" Mean for Customers?</button>
+        <div class="definition-content">
+            <p><strong>Locked-in</strong> = when switching to a competitor is costly or difficult</p>
+            <p><strong>Example 1 - Factory equipment:</strong></p>
+            <p>A factory buys £10 million of equipment from Company X. Now it needs spare parts and maintenance from Company X. Hard to switch - too expensive!</p>
+            <p><strong>Example 2 - Software:</strong></p>
+            <p>A company uses Microsoft Office for 20 years. All files are in Microsoft formats. Staff trained on Microsoft. Switching to Google Docs would take years and cost millions in retraining!</p>
+            <p>Large firms deliberately create lock-in situations to guarantee future revenue!</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ Why do large firms sign long-term contracts with their suppliers?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Helping suppliers is not the reason - large firms sign contracts to protect themselves from uncertainty.', 'Long-term contracts lock in prices and conditions, giving large firms predictable costs for long-term planning.')">A) To help small suppliers grow bigger</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Long-term contracts lock in prices, giving large firms predictable costs needed for long-term planning.', 'Long-term contracts lock in prices and conditions, giving large firms predictable costs for long-term planning.')">B) To lock in prices for stable planning</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'The government does not require these contracts - firms choose them for their own stability.', 'Long-term contracts lock in prices and conditions, giving large firms predictable costs for long-term planning.')">C) The government requires these contracts</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Short-term contracts would give more flexibility - firms choose long-term specifically to reduce uncertainty.', 'Long-term contracts lock in prices and conditions, giving large firms predictable costs for long-term planning.')">D) Short-term deals are more expensive</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 19: Reality of Modern Markets -->
+
+<div class="slide">
+    <h1>🌍 The Reality of Modern Markets</h1>
+    <div class="content">
+        <h3>The Assumptions of Perfect Competition are BROKEN in Modern Markets</h3>
+        <div class="simple-box">
+            <p><strong>❌ Assumption 1 BROKEN: Free price adjustment</strong></p>
+            <p>Large firms STRONGLY resist price changes. They avoid price competition and control demand as much as possible.</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>❌ Assumption 2 BROKEN: Free entry and exit</strong></p>
+            <p>Enormous barriers to entry prevent new firms. Suppliers and buyers are often locked in. Consumers are influenced by heavy advertising.</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>❌ Assumption 3 BROKEN: Small firms with no market power</strong></p>
+            <p>Dominant firms have ENORMOUS market power - over prices, suppliers, customers, and even governments!</p>
+        </div>
+        <div class="example-box">
+            <h3>📚 John Kenneth Galbraith - "The New Industrial State"</h3>
+            <p>Galbraith was a famous American economist who argued:</p>
+            <p>• Modern economies should NOT be called <strong>market systems</strong></p>
+            <p>• They should be called <strong>planning systems</strong></p>
+            <p>• Large corporations plan so much of the economy that the "free market" is largely a myth</p>
+            <p>• The price mechanism still works to SOME degree</p>
+            <p>• But <span class="highlight">corporate planning is more important</span> than the price mechanism in modern economies</p>
+        </div>
+        <button class="definition-toggle" onclick="toggleDefinition(this)">📖 Does the Price Mechanism Still Matter?</button>
+        <div class="definition-content">
+            <p><strong>Yes - but less than textbooks suggest!</strong></p>
+            <p>The price mechanism still exists and still works:</p>
+            <p>• Price changes still send signals to market actors</p>
+            <p>• Some markets are still fairly competitive (like local services)</p>
+            <p>• Price competition happens in some areas</p>
+            <p>BUT overall, corporate planning by large firms is MORE important in determining what gets produced, at what price, and in what quantities.</p>
+            <p>Real economies are a mix of markets and planning - dominated by the planning of large corporations!</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ Galbraith argued modern economies are better described as what?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Free market systems is what textbooks say - Galbraith argued the opposite, that planning dominates.', 'Galbraith argued modern economies are better described as corporate planning systems, not free market systems.')">A) Free market systems always</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Galbraith argued modern economies are better described as corporate planning systems, not free markets.', 'Galbraith argued modern economies are better described as corporate planning systems, not free market systems.')">B) Corporate planning systems overall</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Government-controlled systems describes socialism or communism - Galbraith was talking about capitalist economies.', 'Galbraith argued modern economies are better described as corporate planning systems, not free market systems.')">C) Government-controlled systems mainly</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Perfect competition systems is the textbook theory - Galbraith showed this does not reflect reality.', 'Galbraith argued modern economies are better described as corporate planning systems, not free market systems.')">D) Perfect competition systems today</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- SLIDE 20: Summary -->
+
+<div class="slide">
+    <h1>✅ Summary - What We Have Learned</h1>
+    <div class="content">
+        <div class="simple-box">
+            <p><strong>1. Price Mechanism (Week 4 Recap)</strong></p>
+            <p>Prices act as signals. Perfect information NOT needed (Hayek). But free markets assume small firms and free entry - not reality!</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>2. Monopolistic Competition (Small vs Small)</strong></p>
+            <p>SMEs compete on price, quality, location, time, and differentiation. Even small firms have SOME market power.</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>3. Large Firms Beat Small Firms (Small vs Big)</strong></p>
+            <p>Economies of scale, R&D, branding, risk management, supplier power, political power. Large firms overwhelmingly more competitive.</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>4. Oligopolies Form and Stay Stable</strong></p>
+            <p>Markets become dominated by a few giant firms. Barriers to entry keep new firms out. Structure is very stable once formed.</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>5. Oligopolistic Competition (Big vs Big)</strong></p>
+            <p>Big firms AVOID price wars. Compete through innovation, new markets, branding. Need stability for long-term planning. Control supply and demand.</p>
+        </div>
+        <div class="simple-box">
+            <p><strong>6. Reality of Modern Markets (Galbraith)</strong></p>
+            <p>All three assumptions of perfect competition are broken. Modern economies are corporate PLANNING systems, not free markets.</p>
+        </div>
+        <div class="example-box">
+            <h3>🎯 The Big Takeaway</h3>
+            <p>The economy you learned about in basic theory (many small firms, free prices, free entry) does NOT describe the real world.</p>
+            <p>The real world is dominated by <span class="highlight">a handful of giant corporations</span> that plan carefully, avoid price competition, control their suppliers and customers, and shape the rules through political power.</p>
+            <p><strong>Understanding this is key to understanding how the modern economy REALLY works!</strong> 💡</p>
+        </div>
+    </div>
+    <div class="mcq-section">
+        <div class="mcq-question">❓ Which best summarises the main lesson of Lecture 5?</div>
+        <ul class="mcq-options">
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Small firms being best is the popular belief - but the lecture showed large firms overwhelmingly dominate.', 'The main lesson is that real markets are dominated by oligopolies where big firms plan carefully and avoid price competition.')">A) Small firms are the best competitors</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Free markets working perfectly describes basic economic theory - Lecture 5 showed this is not reality.', 'The main lesson is that real markets are dominated by oligopolies where big firms plan carefully and avoid price competition.')">B) Free markets work perfectly today</li>
+            <li class="mcq-option" onclick="checkAnswer(this, true, 'Correct! Real markets are dominated by oligopolies where large firms plan carefully, avoid price wars, and shape the economy.', 'The main lesson is that real markets are dominated by oligopolies where big firms plan carefully and avoid price competition.')">C) Real markets are dominated by planned oligopolies</li>
+            <li class="mcq-option" onclick="checkAnswer(this, false, 'Price competition is actually what big firms AVOID - non-price competition dominates between large firms.', 'The main lesson is that real markets are dominated by oligopolies where big firms plan carefully and avoid price competition.')">D) Price competition always dominates</li>
+        </ul>
+        <div class="mcq-feedback"></div>
+    </div>
+</div>
+
+<!-- Navigation -->
+
+<div class="navigation">
+    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+    <div class="progress">
+        <span id="slideNumber">1</span> / <span id="totalSlides">20</span>
+    </div>
+    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+</div>
+
+</div>
+
+<script>
+    let currentSlide = 1;
+    const totalSlides = document.querySelectorAll('.slide').length;
+    document.getElementById('totalSlides').textContent = totalSlides;
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        if (n > totalSlides) { currentSlide = totalSlides; }
+        if (n < 1) { currentSlide = 1; }
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[currentSlide - 1].classList.add('active');
+        document.getElementById('slideNumber').textContent = currentSlide;
+        document.getElementById('prevBtn').disabled = (currentSlide === 1);
+        document.getElementById('nextBtn').disabled = (currentSlide === totalSlides);
+        document.querySelectorAll('.mcq-option').forEach(o => {
+            o.classList.remove('correct', 'incorrect');
+            o.style.pointerEvents = 'auto';
+        });
+        document.querySelectorAll('.mcq-feedback').forEach(f => {
+            f.classList.remove('show', 'correct-feedback', 'incorrect-feedback');
+        });
+        window.scrollTo(0, 0);
+    }
+
+    function changeSlide(direction) {
+        currentSlide += direction;
+        showSlide(currentSlide);
+    }
+
+    function toggleDefinition(button) {
+        const content = button.nextElementSibling;
+        content.classList.toggle('show');
+        button.textContent = content.classList.contains('show')
+            ? '📖 Hide Information'
+            : '📖 Show More Information';
+    }
+
+    function checkAnswer(option, isCorrect, explanation, correctExplanation) {
+        const allOptions = option.parentElement.querySelectorAll('.mcq-option');
+        const feedback = option.closest('.mcq-section').querySelector('.mcq-feedback');
+        allOptions.forEach(opt => opt.style.pointerEvents = 'none');
+        if (isCorrect) {
+            option.classList.add('correct');
+            feedback.textContent = '✅ Correct! ' + correctExplanation;
+            feedback.classList.add('show', 'correct-feedback');
+        } else {
+            option.classList.add('incorrect');
+            allOptions.forEach(opt => {
+                if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                    opt.classList.add('correct');
+                }
+            });
+            feedback.textContent = '❌ Incorrect. ' + explanation;
+            feedback.classList.add('show', 'incorrect-feedback');
+        }
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft' && currentSlide > 1) changeSlide(-1);
+        else if (e.key === 'ArrowRight' && currentSlide < totalSlides) changeSlide(1);
+    });
+
+    showSlide(currentSlide);
+</script>
+
+</body>
+</html>
